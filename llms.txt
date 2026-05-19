@@ -1,0 +1,73 @@
+# LLM Wiki
+
+本目录是一个本地 Markdown LLM Wiki，采用 Karpathy 原始模式：`raw/` 保存来源，`wiki/` 保存整理后的知识，`AGENTS.md` 定义 AI 代理维护规则。
+
+## Entry Points
+
+- [Index](index.md): human and AI navigation entry.
+- [Agent Rules](AGENTS.md): rules for reading, updating, and linting the wiki.
+- [Maintenance Log](log.md): append-only change log.
+
+## Core Pages
+
+- [LLM Wiki Concept](wiki/concepts/llm-wiki.md)
+- [Model Context Protocol](wiki/concepts/model-context-protocol.md)
+- [MCP Tools, Resources, and Prompts](wiki/concepts/mcp-tools-resources-prompts.md)
+- [MCP Learning Map](wiki/syntheses/mcp-learning-map.md)
+- [MCP vs RAG](wiki/questions/mcp-vs-rag.md)
+- [Retrieval-Augmented Generation](wiki/concepts/retrieval-augmented-generation.md)
+- [RAG Pipeline](wiki/concepts/rag-pipeline.md)
+- [Chunking](wiki/concepts/chunking.md)
+- [Embedding](wiki/concepts/embedding.md)
+- [Vector Database](wiki/concepts/vector-database.md)
+- [Hybrid Search](wiki/concepts/hybrid-search.md)
+- [Reranker](wiki/concepts/reranker.md)
+- [RAG Learning Map](wiki/syntheses/rag-learning-map.md)
+- [RAG vs LLM Wiki](wiki/syntheses/rag-vs-llm-wiki.md)
+- [Why RAG Still Hallucinates](wiki/questions/why-rag-still-hallucinates.md)
+- [RAG vs Fine-tuning](wiki/questions/rag-vs-fine-tuning.md)
+- [Tavily](wiki/entities/tavily.md)
+- [Browserbase](wiki/entities/browserbase.md)
+- [Tavily vs Browserbase](wiki/questions/tavily-vs-browserbase.md)
+- [Karpathy LLM Wiki Source Summary](wiki/sources/karpathy-llm-wiki.md)
+- [MySQL EXPLAIN](wiki/concepts/mysql-explain.md)
+- [SQL Indexing](wiki/concepts/sql-indexing.md)
+- [MySQL Transaction Isolation](wiki/concepts/mysql-transaction-isolation.md)
+- [MVCC](wiki/concepts/mvcc.md)
+- [GORM Transaction](wiki/concepts/gorm-transaction.md)
+- [Diagnose MySQL Slow Query](wiki/questions/how-to-diagnose-a-slow-mysql-query.md)
+- [Why MySQL Repeatable Read Is Not Simple Snapshot Isolation](wiki/questions/why-mysql-repeatable-read-is-not-the-same-as-snapshot-isolation.md)
+- [Redis Data Types](wiki/concepts/redis-data-types.md)
+- [Redis Persistence](wiki/concepts/redis-persistence.md)
+- [Redis ACL](wiki/concepts/redis-acl.md)
+- [Redis SCAN](wiki/concepts/redis-scan.md)
+- [Redis Big Key Deletion](wiki/concepts/redis-big-key-deletion.md)
+- [OpenFaaS Gateway](wiki/concepts/openfaas-gateway.md)
+- [OpenFaaS Function Invocation Path](wiki/questions/openfaas-function-invocation-path.md)
+- [Kubernetes Namespace](wiki/concepts/kubernetes-namespace.md)
+- [Expose OpenFaaS Gateway Locally with kind](wiki/questions/how-kind-exposes-openfaas-gateway-locally.md)
+- [Elasticsearch Architecture](wiki/concepts/elasticsearch-architecture.md)
+- [Elasticsearch Shard](wiki/concepts/elasticsearch-shard.md)
+- [Kibana Data View](wiki/concepts/kibana-data-view.md)
+- [Prometheus vs Elasticsearch](wiki/syntheses/prometheus-vs-elasticsearch.md)
+
+## Maintenance Rules
+
+- [Agent Rules](AGENTS.md): includes ingest, query, lint, and maintenance workflow.
+- [Inbox Rules](raw/inbox/README.md): external exports require user review before formal wiki ingestion.
+
+## Source Records
+
+- [Karpathy LLM Wiki gist](raw/sources/2026-04-04-karpathy-llm-wiki.source.md)
+- [MCP Official Intro](raw/sources/2026-05-15-mcp-official-intro.source.md)
+- [MCP Official Architecture](raw/sources/2026-05-15-mcp-official-architecture.source.md)
+- [MCP Official Server Concepts](raw/sources/2026-05-15-mcp-official-server-concepts.source.md)
+- [RAG Original Paper](raw/sources/2026-05-15-rag-original-paper.source.md)
+- [RAG Survey](raw/sources/2026-05-15-rag-survey.source.md)
+- [Self-RAG](raw/sources/2026-05-15-self-rag.source.md)
+- [RAPTOR](raw/sources/2026-05-15-raptor.source.md)
+- [GraphRAG](raw/sources/2026-05-15-graphrag.source.md)
+- [AWS RAG vs Fine-tuning](raw/sources/2026-05-15-aws-rag-vs-fine-tuning.source.md)
+- [Tavily Docs](raw/sources/2026-05-16-tavily-docs.source.md)
+- [Browserbase Docs](raw/sources/2026-05-16-browserbase-docs.source.md)
+- [Youdao approved import review](raw/inbox/youdao/approved-2026-05-15/review.md)

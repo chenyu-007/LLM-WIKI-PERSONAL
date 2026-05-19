@@ -1,0 +1,14 @@
+# OS/editor noise
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Local temporary files
+*.tmp
+*.temp
+*.bak
+*.swp
+
+# Generated caches
+.cache/
+__pycache__/
