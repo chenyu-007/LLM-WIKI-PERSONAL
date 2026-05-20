@@ -45,6 +45,10 @@ llm-wiki/
 
 每次导入、重构或纠错，在 `log.md` 追加记录。
 
+### 5. 推送到 GitHub
+
+每次更新知识库后，完成链接和结构检查，再提交并 `git push` 到远程仓库。
+
 ## HTML 阅读层
 
 本 Wiki 的唯一知识源仍然是 Markdown。为了方便人阅读，可以使用旁路 Quartz 工程 `../llm-wiki-site/` 把当前 Markdown 自动构建成 HTML。

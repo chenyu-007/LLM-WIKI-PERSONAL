@@ -120,6 +120,18 @@ sources:
 
 维护闭环完成后，在 `log.md` 追加记录，说明修复了哪些导航或链接问题。
 
+### publish：维护后的 GitHub 同步
+
+每次新增、删除或更新本知识库内容后，维护闭环的最后一步必须执行 Git 同步：
+
+1. 运行 `git status --short --branch`，确认变更范围。
+2. 运行必要的 Markdown 链接、元数据或重复页面检查。
+3. 使用清晰的 commit message 提交本次知识库更新。
+4. 运行 `git push` 推送到远程仓库。
+5. 推送失败时，不要声称同步完成；需要说明失败原因和当前本地提交状态。
+
+这个规则适用于所有正式知识库更新，包括 `wiki/`、`raw/`、`schema/`、`templates/`、`index.md`、`llms.txt`、`AGENTS.md` 和 `log.md`。
+
 ## 维护原则
 
 - 不把 `raw/` 当成草稿区；解释和总结只写在 `wiki/`。
