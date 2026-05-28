@@ -1,0 +1,15 @@
+Title: OpenSpec 要补的，是 AI 编程之前的 planning layer，让关键决策不再只活在聊天记录里，而是变成可追踪的工件系统。从 Vibe Codin
+Source Type: douyin-video
+Source URL: https://www.douyin.com/video/7628166551845820331
+Captured At: 2026-05-25 19:29:25 +08:00
+Published At: Unknown
+Author: Unknown
+Source ID: 7628166551845820331
+MCP Tool: extract_douyin_text
+Tags:
+Download URL: https://aweme.snssdk.com/aweme/v1/play/?video_id=v0300fg10000d7eb21nog65tcq3t7shg&ratio=720p&line=0
+
+---
+
+Raw Text:
+你用AI写代码是不是经常这样，需求说清楚了，代码也生成了，但过两天回头看，根本不知道当时为什么这样设计，这不是你的问题，是web coding的问题。2024年AI编程的主流是web coding对话驱动开发，需求在对话里澄清，设计在对话里演化，任务拆解在对话里临时形成，代码也在对话里持续推进。这种方式的优势很明显，启动成本低、反馈快，探索效率高，特别适合原型期短、任务局部改动。但它的问题也非常明确，它把太多关键决策留在了聊天记录里。项目小的时候问题不大，上学还短，参与人还少，决策还没有大规模分叉。但一旦任务变长，文件变多，参与者变多，问题就开始出现。因为真正重要的已经不是AI会不会写，而是需求有没有被固定下来，设计有没有形成明确约束，任务有没有拆成可执行单元，这些东西到底是存在于工件里，还是只存在于聊天记录里。如果答案是后者，系统就会越来越依赖上下文连续性上下云，胆断段被压缩，被不同agent分段继承，决策就很容易飘。所以web coding的核心问题不是速度，而是决策。没有工件化，open要补的恰好就是这一层。很多人把open理解成一个写的工具。但如果你真的去看它的设计，你会发现它真正想补的并不是代码生成层，而是AI编程之前的planning layer，它并不是一个代码生成器，也不是传统意义上的speack文档编辑器，它真正提供的是一套artifact guided workflow。8 proposal spec design tasks这些planning artifacts明确拉近开发流程，这意味着open spec不再解决怎么让AI写的更快，它在解决怎么让AI编程之前的关键决策不再只活在聊天记录里。而且它还有一个很重要的点，它不是传统瀑布式规范，它自己强调的是fluid not rigid，iterative not waterfall, 保留对话驱动开发的速度，但把关键决策放进弓箭系统。它不是在反对web coding，它是在给web coding增加planning artifacts。这件事为什么重要？因为如果AI coding继续往前走，代码生成本身会越来越便宜，真正越来越贵的反而是需求定义错误、设计约束缺失，任务拆解混乱，决策无法追踪，未来AI编程的竞争不只是执行能力，还会看谁能把planning layer做得更稳。所以open spec不是在解决怎么写spec，它是在解决AI编程里的关键决策，什么时候应该脱离聊天记录变成弓箭系统。从web coding到spec driven，本质上不是从快回到慢，而是从纯对话驱动走向artifact的development。你觉得AI编程下一阶段真正该补的是更强执行还是更强planning artifacts评论区聊聊，关注我，下期继续带你拆。

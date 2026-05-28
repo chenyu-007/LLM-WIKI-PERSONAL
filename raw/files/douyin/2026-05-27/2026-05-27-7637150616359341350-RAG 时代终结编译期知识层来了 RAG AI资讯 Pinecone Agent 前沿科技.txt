@@ -1,0 +1,15 @@
+Title: RAG 时代终结？编译期知识层来了 ##RAG ##AI资讯 ##Pinecone ##Agent ##前沿科技
+Source Type: douyin-video
+Source URL: https://v.douyin.com/mLG-K1JgXJE/
+Captured At: 2026-05-27 11:10:29 +08:00
+Published At: Unknown
+Author: 叶哥说AI
+Source ID: 7637150616359341350
+MCP Tool: extract_douyin_text
+Tags: RAG, Pinecone, Agent, Nexus, 编译期知识层
+Download URL: https://aweme.snssdk.com/aweme/v1/play/?line=0&logo_name=aweme_diversion_search&ratio=720p&video_id=v0200fg10000d7u9nenog65mveni66l0
+
+---
+
+Raw Text:
+G要凉了，向量数据库鼻祖自己说的，潘控刚发布nexus，在向量数据库之上新增了知识引擎层背后的信号很明确，rag的检索模式根本跟不上agent的需求。Rag是给聊天机器人设计的，你问一句他搜一堆。但agent不是聊天，他要执行任务，每次绘话都从零开始找知识，85%的算力全浪费了。X的做法是提前编译知识，就像厨师把菜谱记在心里，不用每次翻书。Agent拿到的直接是结构化的知识成品，效果有多猛？同一个金融分析任务，280万token砍到4000，直接省了98%，速度还快了30倍。潘控创始人说，这就像C Q统一了数据库查询，他们推出的no ql可能就是agent时代的标准语言。二没死，但它只是起点，编译期知识层才是agent的基础设施。你觉得呢？评论区聊聊。

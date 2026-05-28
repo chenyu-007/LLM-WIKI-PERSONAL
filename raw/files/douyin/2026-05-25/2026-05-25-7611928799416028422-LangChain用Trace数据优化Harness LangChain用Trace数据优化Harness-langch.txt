@@ -1,0 +1,15 @@
+Title: LangChain用Trace数据优化Harness LangChain用Trace数据优化Harness-langchain《Improving Deep A
+Source Type: douyin-video
+Source URL: https://www.douyin.com/video/7611928799416028422
+Captured At: 2026-05-25 19:25:01 +08:00
+Published At: Unknown
+Author: Unknown
+Source ID: 7611928799416028422
+MCP Tool: extract_douyin_text
+Tags:
+Download URL: https://aweme.snssdk.com/aweme/v1/play/?line=0&logo_name=aweme_diversion_search&ratio=720p&video_id=v0d00fg10000d6hg0j7og65l84fo4l00
+
+---
+
+Raw Text:
+我们之前读过opai和DeepMind的工程师的博客，他们都在强调一个趋势，agent的上限越来越取决于harness，而不是模型本身。今天开始精读lancha的这篇博客，improving deep agents with harness engineering. 他们在不改变模型基座的前提下，通过调优harness让deep agents的跑分从52.8提升到了66.5，从榜单第30开外一路进到前五。他们刻意把harness优化空间压缩到3类系统，提示词、工具体系以及围绕模型和工具调用的中间键，中间键是line，chain使用的术语，本质上就是挂在模型和工具调用周围的hook。这三类改动都属于harness。Line认为，harness的目标是把模型那种尖刺式、不稳定的智能塑造成适合完成特定任务的稳定执行系统，在模型外围打造系统结构，去优化任务表现、token、效率、延迟等指标。那他们是如何发现agent在哪里出了问题，agent跑偏、报错、超时之后，留下的是成千上万行运行轨迹，人工逐航排查成本极高，几乎不可能形成快速迭代。于是把读日志找问题这件事儿做成了trace analyser skill。这个skill流程分为三步，第一步，抓取数据，从line sm日志平台把这次实验里所有agent的运行轨迹原始数据全部落下来。第二步，并行分析系统，按批次把这些trace切分开，同时启动多个分析子agent并行跑，每个子agent负责一批，专门做错误分析。找到报错点之后，所有子agent的结论汇总到一个主agent那里，由主agent统一提炼成结构化的发现和改进建议。第三步，人工审查主agent给出的是下一次实验要改什么的完整建议清单，工程师在这里参与核对建议是否合理，批准后才进入下一轮改动。有一点很重要，改动必须是通用的对特定任务过度拟合的修改，可能让其他题目的表现退步，这三步加在一起，把原来需要几个小时的日志排查压缩成一个可以快速循环的工程流程，追踪记录，也就是trace，是整个改进闭环的核心信号。很多所谓模型不够聪明的问题，其实是系统没有在合适的时机把正确的上下和约束交给模型，没有trace就无法定位，这种缺口问题只会被归结为模型能力不足。蓝晨做的这套实验本质上是在证明一件事儿，agent的提升不只是模型能力问题，更是系统设计问题。本期我们梳理了他们的实验框架和诊断机制，下一期我们来看在这些trace分析之后，lanchain具体做了哪些harness设计，真正提升了agent的表现。这里是漫学AI，我们下期见。

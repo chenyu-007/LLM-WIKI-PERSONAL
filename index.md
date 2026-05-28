@@ -14,6 +14,13 @@
 - [Browserbase](wiki/entities/browserbase.md)
 - [MySQL 慢查询诊断](wiki/questions/how-to-diagnose-a-slow-mysql-query.md)
 - [Redis 数据类型](wiki/concepts/redis-data-types.md)
+- [AI 知识库全景图](wiki/syntheses/ai-knowledge-map.md)
+- [AI Agent 概念](wiki/concepts/ai-agent.md)
+- [Agent Memory 长期记忆](wiki/concepts/agent-memory.md)
+- [Agent Skill 概念](wiki/concepts/agent-skill.md)
+- [Agent Skill vs MCP](wiki/questions/agent-skill-vs-mcp.md)
+- [AI 工作流](wiki/concepts/ai-workflow.md)
+- [Anthropic Agent Engineering 学习地图](wiki/syntheses/anthropic-agent-engineering-map.md)
 - [Karpathy LLM Wiki 来源总结](wiki/sources/karpathy-llm-wiki.md)
 - [原始来源记录](raw/sources/2026-04-04-karpathy-llm-wiki.source.md)
 - [维护规约](AGENTS.md)
@@ -47,6 +54,11 @@
 - [Elasticsearch 架构](wiki/concepts/elasticsearch-architecture.md)
 - [Elasticsearch Shard](wiki/concepts/elasticsearch-shard.md)
 - [Kibana Data View](wiki/concepts/kibana-data-view.md)
+- [Agent Skill](wiki/concepts/agent-skill.md)
+- [AI Agent](wiki/concepts/ai-agent.md)
+- [Agent Memory](wiki/concepts/agent-memory.md)
+- [上下文工程](wiki/concepts/context-engineering.md)
+- [AI 工作流](wiki/concepts/ai-workflow.md)
 
 ### 来源
 
@@ -67,6 +79,11 @@
 
 - [Tavily](wiki/entities/tavily.md)
 - [Browserbase](wiki/entities/browserbase.md)
+- [OpenClaw](wiki/entities/openclaw.md)
+- [Claude Code](wiki/entities/claude-code.md)
+- [Anthropic](wiki/entities/anthropic.md)
+- [Pinecone / Nexus](wiki/entities/pinecone.md)
+- [Mem0](wiki/entities/mem0.md)
 
 ### 综合
 
@@ -74,6 +91,8 @@
 - [RAG 学习地图](wiki/syntheses/rag-learning-map.md)
 - [RAG 和 LLM Wiki 怎么配合](wiki/syntheses/rag-vs-llm-wiki.md)
 - [Prometheus 和 Elasticsearch 怎么区分](wiki/syntheses/prometheus-vs-elasticsearch.md)
+- [AI 知识库全景图](wiki/syntheses/ai-knowledge-map.md)
+- [Anthropic Agent Engineering 学习地图](wiki/syntheses/anthropic-agent-engineering-map.md)
 
 ### 问题
 
@@ -85,6 +104,8 @@
 - [为什么 MySQL Repeatable Read 不等于简单快照隔离](wiki/questions/why-mysql-repeatable-read-is-not-the-same-as-snapshot-isolation.md)
 - [OpenFaaS 函数调用路径怎么理解](wiki/questions/openfaas-function-invocation-path.md)
 - [kind 本地如何暴露 OpenFaaS Gateway](wiki/questions/how-kind-exposes-openfaas-gateway-locally.md)
+- [Agent Skill 和 MCP 最根本的差异](wiki/questions/agent-skill-vs-mcp.md)
+- [PRD 还是原型](wiki/questions/prototype-vs-prd.md)
 
 ## 当前维护重点
 

@@ -1,0 +1,216 @@
+Title: 多 agent 编程工作流：从提示词到工程编排
+Source Type: note
+Source URL: Local Codex conversation
+Captured At: 2026-05-27 17:49:57 +08:00
+Published At: Unknown
+Author: User and Codex
+Source ID: codex-conversation-2026-05-27-multi-agent-coding-workflow
+MCP Tool: Unknown
+Tags: multi-agent, coding-agent, codex, claude-code, workflow, subagents, agent-orchestration
+
+---
+
+Raw Text:
+
+本记录来自一次关于“如何学习和搭建多 agent 编程工作流”的 Codex 对话。用户关心的问题包括：多 agent 编程是不是只是提示词工程、Codex 能否通过自然语言唤起多个 agent、角色是否应该固化、Anthropic 的标准模式是什么、Claude Code 是否支持 subagents、Codex 中如何落地，以及这种方法能否迁移到 Trae 等其他编码 agent。
+
+重要结论如下。
+
+1. 多 agent 编程不是单纯的“角色扮演提示词”
+
+入门层面确实可以通过自然语言提示词启动多 agent 工作流，但严肃使用时不能停留在“你当产品经理、你当开发、你当测试”这种临时角色扮演。
+
+更准确的定义是：
+
+多 agent 编程 = 固定角色说明 + 固定交付格式 + 固定流程编排 + 上下文隔离 + 工具权限 + 验证闭环。
+
+提示词只是入口。真正决定质量的是任务拆分、上下文边界、文件所有权、串并行规则、审查机制和最终验证。
+
+2. Anthropic 的核心模式比“PM/开发/测试”更基础
+
+Anthropic 在 Building Effective Agents 中总结的常见工作流模式包括：
+
+- Prompt chaining：任务按步骤串行推进，例如需求分析 -> 技术方案 -> 实现 -> 审查 -> 测试。
+- Routing：先判断任务类型，再交给对应专家，例如 bug 交给 debugger，安全问题交给 security reviewer。
+- Parallelization：多个互不依赖的任务并发处理，例如前端、后端、测试覆盖分别分析。
+- Orchestrator-workers：主控 agent 动态拆任务，分派 worker，再汇总结果。
+- Evaluator-optimizer：一个 agent 生成结果，另一个 agent 审查反馈，再循环优化。
+
+这些模式比固定角色名更重要。所谓“产品经理、架构师、开发、测试”只是把这些模式落到软件工程语境中的一种本地实践。
+
+3. 推荐的基本执行节奏是“先串行，再并发，再串行”
+
+多 agent 工作通常不是全并发，也不是全串行。推荐节奏是：
+
+需求澄清 -> 方案拆分 -> 并发执行独立任务 -> 主控整合 -> 审查和测试 -> 最终验收。
+
+必须串行的场景：
+
+- 需求还不清楚。
+- 架构或文件范围还没定。
+- 多个 agent 会修改同一个文件。
+- 一个任务依赖另一个任务的输出。
+- 正在进行最终集成、验收或发布判断。
+
+适合并发的场景：
+
+- 多个任务互不依赖。
+- 多个模块或文件的改动范围不冲突。
+- 一个 agent 读前端，一个 agent 读后端，一个 agent 读测试。
+- reviewer 和 qa 在实现完成后并发检查。
+- 一个 agent 查资料，另一个 agent 读本地代码。
+
+4. Codex 支持通过自然语言触发 subagents，但必须明确要求
+
+Codex 官方支持 subagents。Codex 可以生成专门的子 agent，并行执行任务，然后把结果收回到主响应中。
+
+Codex 的关键点：
+
+- Codex 只会在用户明确要求时启动 subagents。
+- Codex 内置 agent 类型包括 default、worker、explorer。
+- 可以在项目中创建 `.codex/agents/*.toml` 来固化自定义 agent。
+- 可以用 `.codex/config.toml` 设置 `agents.max_threads`、`agents.max_depth` 等运行参数。
+- 项目级规则可以写入 `AGENTS.md`。
+
+因此，在 Codex 中更工程化的做法是：
+
+- 用 `AGENTS.md` 写项目级协作规则。
+- 用 `.codex/agents/*.toml` 固化角色。
+- 用 `.codex/config.toml` 控制并发和递归深度。
+- 用一段标准 Orchestrator 提示词启动流程。
+
+5. `.codex/agents/*.toml` 是 Codex 的项目级自定义子 agent 配置
+
+`.codex/agents/*.toml` 的含义是：在项目目录下放置 Codex 可读取的自定义子 agent 配置文件。
+
+示例结构：
+
+```text
+项目/
+  AGENTS.md
+  .codex/
+    config.toml
+    agents/
+      product.toml
+      architect.toml
+      implementation_worker.toml
+      reviewer.toml
+      qa.toml
+```
+
+每个 agent 文件通常包含：
+
+- `name`：agent 名称。
+- `description`：什么时候适合调用这个 agent。
+- `sandbox_mode`：权限范围，例如 read-only 或 workspace-write。
+- `developer_instructions`：固定职责、禁止事项和输出格式。
+
+这个机制解决了“每次都临时写提示词”的问题，把角色职责变成可复用配置。
+
+6. 在 Codex 中推荐的固定角色
+
+可以先用 5 个角色：
+
+- Product Agent：只读，整理功能目标、用户故事、非目标、验收标准和待确认问题。
+- Architect Agent：只读，分析项目结构、影响文件、实现步骤和验证策略。
+- Worker Agent：可写，只在主控指定文件范围内实现功能，保持最小改动。
+- Reviewer Agent：只读，检查 correctness、security、regression、accessibility 和 missing tests。
+- QA Agent：只读，设计和运行验证清单，覆盖正常路径、异常路径、配置读取、命令行为和回归风险。
+
+角色不是越多越好。新手应从这 5 个角色和一个主控 Orchestrator 开始。
+
+7. 主控 Orchestrator 是多 agent 工作流的关键
+
+主控不应该把所有事情都甩给子 agent。主控负责：
+
+- 判断哪些任务必须串行，哪些任务可以并发。
+- 给每个子 agent 明确任务边界和输出格式。
+- 避免多个 worker 修改同一个文件。
+- 汇总各 agent 结论。
+- 决定最终实现方案。
+- 整合修改并处理冲突。
+- 运行最终验证并报告剩余风险。
+
+没有主控整合的多 agent，容易变成多个角色分别输出建议，最后无人负责交付。
+
+8. Claude Code 也支持 subagents，但配置格式不同
+
+Claude Code 官方支持 subagents。它可以自动调用，也可以显式调用。
+
+Claude Code 的常见配置位置：
+
+- 项目级：`.claude/agents/`
+- 用户级：`~/.claude/agents/`
+
+Claude Code 通常使用 Markdown 文件定义 subagent，而 Codex 使用 `.codex/agents/*.toml`。
+
+因此，方法论可以迁移，但配置文件不能直接照搬。
+
+9. 迁移到 Trae、Cursor 等工具时，要迁移方法论，不要迁移目录名
+
+多 agent 工作流中真正可迁移的是：
+
+- 角色职责。
+- 输出格式。
+- 任务边界。
+- 串并行规则。
+- 文件所有权。
+- 验收标准。
+- 审查和测试闭环。
+
+不一定能迁移的是：
+
+- `.codex/agents/*.toml`
+- Codex 的 spawn subagent 机制。
+- Codex 的 `sandbox_mode`。
+- Codex 的 `agents.max_threads` 和 `agents.max_depth`。
+
+在 Trae 中，更可能是把这些规则写入 `.trae/project_rules.md` 或项目规则中，然后让 Builder 或 Agent 模式按规则执行。也就是说，Trae 可以迁移“固定工作流 + 角色模拟 + 验收标准”，但未必等价于 Codex 的真正并发 subagents。
+
+10. 多 agent 编程的固定资产应该沉淀为项目规则
+
+推荐把标准沉淀为跨工具文档：
+
+```text
+agent-workflow.md
+```
+
+其中固定：
+
+- 角色定义。
+- 每个角色的职责边界。
+- 每个角色的禁止事项。
+- 每个角色的输出格式。
+- 串行和并发判断规则。
+- 文件所有权规则。
+- 验证命令和最终报告格式。
+
+再根据工具做适配：
+
+- Codex：`.codex/agents/*.toml`、`.codex/config.toml`、`AGENTS.md`
+- Claude Code：`.claude/agents/*.md`
+- Trae：`.trae/project_rules.md`
+- Cursor：`.cursor/rules`
+
+11. 本次已在本地目录中落地了一套 Codex 配置
+
+本次对话中，已在用户指定的本地目录下创建了一套 Codex 多 agent 工作流配置：
+
+```text
+C:\Users\cheny\Desktop\个人主页\AGENTS.md
+C:\Users\cheny\Desktop\个人主页\.codex\config.toml
+C:\Users\cheny\Desktop\个人主页\.codex\agents\product.toml
+C:\Users\cheny\Desktop\个人主页\.codex\agents\architect.toml
+C:\Users\cheny\Desktop\个人主页\.codex\agents\implementation_worker.toml
+C:\Users\cheny\Desktop\个人主页\.codex\agents\reviewer.toml
+C:\Users\cheny\Desktop\个人主页\.codex\agents\qa.toml
+C:\Users\cheny\Desktop\个人主页\docs\multi-agent-workflow.md
+```
+
+该配置把多 agent 工作流限定为：
+
+需求澄清 -> product 和 architect 并发分析 -> 主控制定计划 -> implementation_worker 实现 -> reviewer 和 qa 并发检查 -> 主控整合、验证、汇报。
+
+12. 最核心的一句话
+
+多 agent 编程的入口是提示词，但核心不是提示词。核心是把软件工程中的分工、交接、权限、审查和验收机制，显式编码成 agent 可执行的工作流。

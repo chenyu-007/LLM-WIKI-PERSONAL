@@ -1,0 +1,15 @@
+Title: 为什么你的skill没用？ #大模型应用 #AI应用开发 #Agent开发 #Anthropic
+Source Type: douyin-video
+Source URL: https://www.douyin.com/video/7624878408459095346
+Captured At: 2026-05-25 19:28:16 +08:00
+Published At: Unknown
+Author: Unknown
+Source ID: 7624878408459095346
+MCP Tool: extract_douyin_text
+Tags:
+Download URL: https://aweme.snssdk.com/aweme/v1/play/?line=0&logo_name=aweme_diversion_search&ratio=720p&video_id=v0d00fg10000d78g1ufog65kglk00g3g
+
+---
+
+Raw Text:
+如果你现在还在花大量时间研究skill点md该怎么排版，那你很可能已经在一个快过时的问题上越卷越深了。Google cloutec转的这篇文章表面上是在讲5种agent skill设计模式。但它最值得先听懂的一句话，其实不是任何一个模式名，而是格式问题已经差不多结束了。作者说的很直接，现在已经有三十多个agent工具在共用同一套点的规格，像cloud code、cli cursor这些工具外层长得越来越像，也就是说你再去纠结vaml怎么写，目录怎么摆，reences和assets怎么命名，这些事情已经不再是分水岭了。真正的分水岭变成什么是内容设计，也就是同样一个skill点，md外壳里面到底放什么逻辑，用什么资源，怎么让模型只在需要的时候加载对的内容。作者举了一个很典型的例子，一个将模型写fast的skill和一个四步走的文档流水线skill，外面看都长得差不多，但里面的设计完全不是一回事，一个更像知识封装，一个更像流程控制，问题根本不在格式，而在内容结构。接着文章先回顾了Google adk的skill to set 3层结构，第一层是list sk只, 给模型看到skill名字和description。第二层是low skill模型，需要的时候再把完整指令拿进来。第三层是load skill resource，只有真正要读参考文档、模板或资源文件时，采去按需加载。这个设计背后的核心逻辑很重要，叫progressive discsure，也就是渐进式披露，先给少量信息，让模型自己决定什么时候再往下拿更多内容，作者甚至直接给了一个量化判断，每个skill在启动时大概只多带来100个抽Ken左右的描述成本。真正重的部分不应该一开始就全部塞进上下文，而是按需在读。你看到这里就会明白，skill设计的关键从来不是把所有规则一口气塞满，而是先把入口做清楚，让模型能找到它，再在需要时拿到更深的内容。所以文章一上来就先抛出两个最常用也最容易上手的模式。第一个叫to rapper，它本质上是给某个库、某个框架、某个内部系统封一个即时专家包。比如fast api telform数据库查询规范、安全策略这些东西模型不是完全不会，但你希望他在处理这个领域问题时，稳定遵守你团队的那套规则，那你就把这些规范放进reences里，让skill在需要时加载。这个模式最值钱的地方是把专家经验从系统提示词里拆出来，变成按需调用的知识包。第二个叫generator，这个模式不是让模型变专家，而是让模型稳定产出固定结构的东西。比如技术报告、api文档commit message，或者你们团队自己的agent skld。它通常会同时用到assets和references。Assets里放模板，references里放风格规则skill自己负责把流程串起来，先加载规则，再加载模板，再补齐缺的信息，最后按固定格式。结果你会发现它和two rapper的差别很大。前者解决的是按什么规则做，后者解决的是按什么结构产出。所以第一集真正要记住的结论只有一个，现在做skill别再把精力放在格式上了。真正拉开差距的是你能不能先判断这个skill到底是在封装知识还是在稳定产出。如果这一步都没想清楚，你后面写的再规范，也大概率只是一个看起来很标准的空壳。下一集我讲剩下三个更狠的模式，因为从第三个开始，Google讲的已经不是怎么给模型补知识了。而是怎么让模型按标准审查先问再做，甚至被强制卡在一个不能乱跳步的流程里。

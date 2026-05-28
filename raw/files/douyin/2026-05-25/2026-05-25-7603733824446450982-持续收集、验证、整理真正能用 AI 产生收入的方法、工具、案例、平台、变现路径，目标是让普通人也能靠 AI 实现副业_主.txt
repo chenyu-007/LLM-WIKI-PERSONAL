@@ -1,0 +1,15 @@
+Title: 持续收集、验证、整理真正能用 AI 产生收入的方法、工具、案例、平台、变现路径，目标是让普通人也能靠 AI 实现副业/主业收入，这不是单纯的“AI 工具列表”，
+Source Type: douyin-video
+Source URL: https://www.douyin.com/video/7603733824446450982
+Captured At: 2026-05-25 19:24:31 +08:00
+Published At: Unknown
+Author: Unknown
+Source ID: 7603733824446450982
+MCP Tool: extract_douyin_text
+Tags:
+Download URL: https://aweme.snssdk.com/aweme/v1/play/?video_id=v0200fg10000d62u75nog65uf1fm3470&ratio=720p&line=0
+
+---
+
+Raw Text:
+兄弟们，这个是一个专注于用AI赚钱的实战资源的合集。它持续搜集、验证、整理的真正能用AI产生收益的一个方法，包括一些工具、案例平台和变现的一些路径都是有的。目标是让普通人也能够靠AI实现副业的一个收入。它不是单纯的AI工具，是更偏向用AI如何去变现的实代的指南。打开这个仓库就能够基本的看到目前的一些主流可以复制的路径和工具站，有需要的可以关注看一下。
